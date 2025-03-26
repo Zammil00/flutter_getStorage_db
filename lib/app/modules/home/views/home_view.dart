@@ -12,11 +12,32 @@ class HomeView extends GetView<HomeController> {
       appBar: AppBar(
         title: const Text('HomeView'),
         centerTitle: true,
+        actions: [
+          IconButton(
+            onPressed: () => controller.resetData(),
+            icon: Icon(Icons.restore),
+          ),
+        ],
       ),
-      body: const Center(
-        child: Text(
-          'HomeView is working',
-          style: TextStyle(fontSize: 20),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text('${controller.data}', style: TextStyle(fontSize: 50)),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                ElevatedButton(
+                  onPressed: () => controller.kurang(),
+                  child: Text('-'),
+                ),
+                ElevatedButton(
+                  onPressed: () => controller.tambah(),
+                  child: Text('+'),
+                ),
+              ],
+            ),
+          ],
         ),
       ),
     );
